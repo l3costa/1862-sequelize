@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "aula1"
+        "aula1",
+        "aula2"
     ]
 }
