@@ -13,6 +13,7 @@ router
   .patch('/pessoas/:id', PessoaController.restauraPessoa)
   .get('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.pegaUmaMatricula)
   .post('/pessoas/:estudanteId/matricula', PessoaController.criaMatricula)
+  .get('/pessoas/:estudanteId/matriculas', PessoaController.obterMatriculasPeloEstudanteId)
   .put('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.atualizaMatricula)
   .delete('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.apagaMatricula)
 
