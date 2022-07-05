@@ -82,6 +82,20 @@ class PessoaController {
     }
   }
 
+  static async cancelaPessoa(req, res) {
+    const { estudanteId } = req.params
+    try {
+
+      await database.Pessoas.update({ ativo: 0 }, { where: { id: estudanteId } })
+
+      await database.Matriculas.update({ status: 'cancelado' }, { where: { estudante_id: estudanteId } })
+
+      return res.status(200).json(`Estudante ${estudanteId} cancelado com sucesso`)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
   static async criaMatricula(req, res) {
     const { estudanteId } = req.params
     const novaMatricula = { ...req.body, estudante_id: Number(estudanteId) }

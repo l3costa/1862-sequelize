@@ -11,6 +11,7 @@ router
   .get('/pessoas/turmas/lotada', PessoaController.pegaTurmaLotada)
   .delete('/pessoas/:id', PessoaController.apagaPessoa)
   .post('/pessoas', PessoaController.criaPessoa)
+  .post('/pessoas/:estudanteId/desativar', PessoaController.cancelaPessoa)
   .put('/pessoas/:id', PessoaController.atualizaPessoa)
   .delete('/pessoas/:id', PessoaController.apagaPessoa)
   .patch('/pessoas/:id', PessoaController.restauraPessoa)
