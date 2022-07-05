@@ -1,5 +1,5 @@
 const database = require('../models')
-const Sequelize = require("sequelize")
+const Sequelize = require('sequelize')
 
 class PessoaController {
   static async pegaTodasAsPessoasAtivas(req, res) {
