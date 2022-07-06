@@ -1,8 +1,8 @@
 const database = require('../models')
 const Sequelize = require('sequelize')
-const Services = require('../services/Services')
+const { PessoasService } = require('../services')
 
-const pessoaService = new Services('Pessoas')
+const pessoaService = new PessoasService()
 
 
 class PessoaController {
