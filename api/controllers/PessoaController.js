@@ -86,11 +86,13 @@ class PessoaController {
     const { estudanteId } = req.params
     try {
 
-      await database.Pessoas.update({ ativo: 0 }, { where: { id: estudanteId } })
+      await database.sequelize.transaction((transacao) => {
+        database.Pessoas.update({ ativo: 0 }, { where: { id: estudanteId } }, { transaction: transacao })
 
-      await database.Matriculas.update({ status: 'cancelado' }, { where: { estudante_id: estudanteId } })
+        database.Matriculas.update({ status: 'cancelado' }, { where: { estudante_id: estudanteId } }, { transaction: transacao })
 
-      return res.status(200).json(`Estudante ${estudanteId} cancelado com sucesso`)
+        return res.status(200).json(`Estudante ${estudanteId} cancelado com sucesso`)
+      })
     } catch (error) {
       return res.status(500).json(error.message)
     }
