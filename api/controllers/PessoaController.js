@@ -1,10 +1,14 @@
 const database = require('../models')
 const Sequelize = require('sequelize')
+const Services = require('../services/Services')
+
+const pessoaService = new Services('Pessoas')
+
 
 class PessoaController {
   static async pegaTodasAsPessoasAtivas(req, res) {
     try {
-      const pessoasAtivas = await database.Pessoas.findAll()
+      const pessoasAtivas = await pessoaService.obterTodosOsRegistros()
       return res.status(200).json(pessoasAtivas)
     } catch (error) {
       return res.status(500).json(error.message)
